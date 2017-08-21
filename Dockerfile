@@ -1,5 +1,5 @@
 FROM phusion/baseimage:0.9.18
-MAINTAINER Brian Prodoehl <bprodoehl@connectify.me>
+MAINTAINER Md. Shadmanul Islam <shadmanulislam@gmail.com>
 
 # Set correct environment variables.
 ENV HOME /root

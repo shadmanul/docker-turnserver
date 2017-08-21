@@ -4,15 +4,19 @@ docker-turnserver
 A Docker container with the Coturn STUN and TURN server (https://github.com/coturn/coturn)
 
 This is currently running v4.4.5.3.
-
+Build the image using this command
+```bash
+docker build -t shadmanul/turnserver:4.4.5.3 .
 ```
-docker run -d --name=turnserver --restart="on-failure:10" --net=host -p 3478:3478 -p 3478:3478/udp bprodoehl/turnserver
+
+```bash
+docker run -d --name=turnserver --restart="on-failure:10" --net=host -p 3478:3478 -p 3478:3478/udp shadmanul/turnserver:4.4.5.3
 ```
 
 This will use icanhazip (http://major.io/icanhazip-com-faq/) to determine your container's public IP address. If you don't wish to use icanhazip, or you wish to use an external IP address that doesn't match what icanhazip would see, you can specify it in the environment:
 
-```
-docker run -d -e EXTERNAL_IP=1.2.3.4 --name=turnserver --restart="on-failure:10" --net=host -p 3478:3478 -p 3478:3478/udp bprodoehl/turnserver
+```bash
+docker run -d -e EXTERNAL_IP=139.59.248.179:3478 --name=turnserver --restart="on-failure:10" --net=host -p 3478:3478 -p 3478:3478/udp shadmanul/turnserver:4.4.5.3
 ```
 
 Environment Parameters
@@ -22,3 +26,19 @@ Environment Parameters
 * PORT -- listening port for STUN and TURN
 * LISTEN_ON_PUBLIC_IP -- bind to the external IP
 * USE_IPV4 -- forces IPv4 when determining the external IP
+
+Authentication & Restart Coturn
+======================================
+```bash
+# go inside docker's bash
+docker exec -it turnserver bash
+
+# add user
+turnadmin -a -u <username> -r <realm> -p <password>
+
+# restart coturn
+service coturn restart
+
+# watch logs
+tail -f /var/log/turnserver.log
+```
