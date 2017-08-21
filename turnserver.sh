@@ -31,6 +31,9 @@ then
     touch /tmp/turnserver.configured
 fi
 
-turnadmin -a -u tashfin -r lokkhi.io -p turn2s3rv3r
+echo realm=lokkhi.io >> /etc/turnserver.conf
+echo verbose >> /etc/turnserver.conf
+echo fingerprint >> /etc/turnserver.conf
+echo lt-cred-mech >> /etc/turnserver.conf
 
-exec /usr/bin/turnserver --no-cli -r lokkhi.io >>/var/log/turnserver.log 2>&1
+exec /usr/bin/turnserver --no-cli >> /var/log/turnserver.log 2>&1
