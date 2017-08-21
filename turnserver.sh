@@ -31,4 +31,6 @@ then
     touch /tmp/turnserver.configured
 fi
 
-exec /usr/bin/turnserver --no-cli >>/var/log/turnserver.log 2>&1
+turnadmin -a -u tashfin -r lokkhi.io -p turn2s3rv3r
+
+exec /usr/bin/turnserver --no-cli -r lokkhi.io >>/var/log/turnserver.log 2>&1
