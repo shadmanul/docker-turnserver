@@ -1,5 +1,5 @@
-docker-turnserver
-=================
+Docker Turnserver
+=
 
 A Docker container with the Coturn STUN and TURN server (https://github.com/coturn/coturn)
 
@@ -20,7 +20,7 @@ docker run -d -e EXTERNAL_IP=139.59.248.179:3478 --name=turnserver --restart="on
 ```
 
 Environment Parameters
------------------
+=
 * SKIP_AUTO_IP -- binds to any address, useful for IPv4 and IPv6 dual-stack when also running with --net=host
 * EXTERNAL_IP -- optional manually-specified external IP address
 * PORT -- listening port for STUN and TURN
@@ -28,7 +28,7 @@ Environment Parameters
 * USE_IPV4 -- forces IPv4 when determining the external IP
 
 Authentication & Restart Coturn
-======================================
+=
 ```bash
 # go inside docker's bash
 docker exec -it turnserver bash
