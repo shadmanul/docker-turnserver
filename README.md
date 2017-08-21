@@ -10,13 +10,13 @@ docker build -t shadmanul/turnserver:4.4.5.3 .
 ```
 
 ```bash
-docker run -d --name=turnserver --restart="on-failure:10" --net=host -p 3478:3478 -p 3478:3478/udp shadmanul/turnserver:4.4.5.3
+docker container run -d --name=turnserver --restart="on-failure:10" --net=host -p 3478:3478 -p 3478:3478/udp shadmanul/turnserver:4.4.5.3
 ```
 
 This will use icanhazip (http://major.io/icanhazip-com-faq/) to determine your container's public IP address. If you don't wish to use icanhazip, or you wish to use an external IP address that doesn't match what icanhazip would see, you can specify it in the environment:
 
 ```bash
-docker run -d -e EXTERNAL_IP=139.59.248.179:3478 --name=turnserver --restart="on-failure:10" --net=host -p 3478:3478 -p 3478:3478/udp shadmanul/turnserver:4.4.5.3
+docker container run -d -e EXTERNAL_IP=139.59.248.179 --name=turnserver --restart="on-failure:10" --net=host -p 3478:3478 -p 3478:3478/udp shadmanul/turnserver:4.4.5.3
 ```
 
 Environment Parameters
